@@ -7,7 +7,12 @@ N = length(data);
 FT = fft(data);
 FT(1) = 0; %Remove DC offset 
 FT = fftshift(FT);
-index = ceil(-N/2):floor(N/2)-1;
+if mod(N,2) == 0 % Check if N is even
+  index = ceil(-N/2):floor(N/2)-1;
+else % N is odd
+  index = ceil(-N/2):floor(N/2);
+end
+
 f = 2*pi*index/N; %normalised w (radians per sample) 
 end
 
