@@ -13,5 +13,7 @@ CLeanedMSE1 = DataCell(:,NotemptyCols);
 NamesCols = {'M = 1','M = 3','M = 5','M = 7','M = 9', 'M = 11', 'M = 13', 'M = 15', 'M = 17', 'M = 19'};
 RowNames = {'N = 1', 'N = 2','N = 3', 'N = 4', 'N = 5'};
 CleanTable = cell2table(CLeanedMSE1,"VariableNames",NamesCols,"RowNames",RowNames)
+
+
 end
 
