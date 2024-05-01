@@ -3,8 +3,17 @@ function [MAFFilteredSignal,MSEFiltered, MAEFiltered] = MAF_filter(NoisySignal,O
 % and number of passes (N) on noisy segments. It returns the filtered
 % signal. It also calculates Mean Square Error (MSE) for corresponding
 % signals and Mean Absolute Error (MAE)
+
+%Input 
+    %NoisySignal - segment of the Noisy signal 
+    %OriginalSig - corresponding segment of the original signal 
+    %Lenghts - max number of filter length 
+    %Passes - max number of number fo passes 
+%Output
 %   MAFFilteredSegments - Cell array containing filtered segments (same size as NoisySignal)
 %   MSEFiltered - Matrix containing mean squared errors (size NxM)
+%   MAEFiltered - MAtrix contatining mean absolute errors (size NxM)
+
 
 %Initialize Filter cell and MSE cell 
 MAFFilteredSignal = cell(Passes,Lenghts);
@@ -18,8 +27,6 @@ numberofelements = length(NoisySignal);
 
 %loop through filter lenghts M every 2 (odd lenghts)
 for M = 1:2:Lenghts
-    % %Calculate the number of valid sums - prevent overflow/any size mismatches 
-    % NoSums = numberofelements - M+1;
     %Calculate starting index for storing values within cell array
      %middle point
      indx= round(M/2);
