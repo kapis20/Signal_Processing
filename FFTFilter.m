@@ -1,4 +1,4 @@
-function [FT_Filtered,MSEFiltered] = FFTFilter(FT,stepsize,maxThreshold,origSig)
+function [FT_Filtered,MSEFiltered] = FFTFilter(FT,startVal,stepsize,maxThreshold,origSig)
 %FFT fitler to remove signlas under certian threshold and convert frequency
 %domain signal into time domain 
 
@@ -17,8 +17,8 @@ FT_unshifted = ifftshift(FT);
 %create cells to store filte and MSE values 
 FT_Filtered =[];
 MSEFiltered =[];
-% Loop through threshold values from 1 to maxThreshold with increments of stepsize.
-for i = 10:stepsize:maxThreshold 
+% Loop through threshold values from startVal to maxThreshold with increments of stepsize.
+for i = startVal:stepsize:maxThreshold 
     FT_temp = FT_unshifted;
     %get rid of components below threshold 
     FT_temp(abs(FT_temp)<i) =0;
